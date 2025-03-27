@@ -42,10 +42,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-let x = req.query.x ? parseFloat(req.query.x) : generateRandomValue(); 
-if (isNaN(x)) {
-    res.status(400).send('Invalid value for x');
-    return;
-}
+
 
 module.exports = app;
