@@ -4,18 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// Require routes
+var mydataRouter = require('./routes/mydata');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var mydataRouter = require('./routes/mydata'); 
-var express = require('express');
-var app = express();
-var computationRouter = require('./routes/computation'); // Path to your new computation route file
-
-app.use('/computation', computationRouter); // Register the new endpoint
-
-// Your existing routes and configurations...
- // Fixed duplicate declaration
+var computationRouter = require('./routes/computation');
 
 var app = express();
 
@@ -29,11 +21,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the routers for each path
-app.use('/', indexRouter);
-app.use('/users', usersRouter);  // This was correct before, no change needed
-app.use('/mydata', mydataRouter); 
 app.use('/computation', computationRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/mydata', mydataRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -51,4 +44,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
