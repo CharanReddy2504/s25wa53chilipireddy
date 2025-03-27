@@ -7,7 +7,9 @@ var logger = require('morgan');
 // Require routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var mydataRouter = require('./routes/mydata');  // Fixed duplicate declaration
+var mydataRouter = require('./routes/mydata'); 
+var computationRouter = require('./routes/computation'); 
+ // Fixed duplicate declaration
 
 var app = express();
 
@@ -24,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use the routers for each path
 app.use('/', indexRouter);
 app.use('/users', usersRouter);  // This was correct before, no change needed
-app.use('/mydata', mydataRouter);  // Correct usage
+app.use('/mydata', mydataRouter); 
+app.use('/computation', computationRouter); // Correct usage
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
