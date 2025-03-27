@@ -8,7 +8,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mydataRouter = require('./routes/mydata'); 
-var computationRouter = require('./routes/computation');
+var express = require('express');
+var app = express();
+var computationRouter = require('./routes/computation'); // Path to your new computation route file
+
+app.use('/computation', computationRouter); // Register the new endpoint
+
+// Your existing routes and configurations...
  // Fixed duplicate declaration
 
 var app = express();
