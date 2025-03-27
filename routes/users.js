@@ -1,18 +1,19 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
-// Step 2: Initialize ratio and acc variables
+// Step 2: Declare variables
 let ratio = 0.75;
 let acc = 1000;
 
-// Step 3: Modify the router callback function
-router.get('/users', (req, res) => {
-    acc = acc * ratio;  // Multiply acc by ratio and store it back in acc
+// Step 3: Modify the router callback
+router.get('/', (req, res) => {
+    acc = acc * ratio;  // Multiply acc by ratio
 
-    // Step 4: Send response with the updated acc value using string interpolation
+    // Step 4: Send the updated value as a response using string interpolation
     res.send(`Value is: ${acc}`);
 });
 
 module.exports = router;
+
 
 
